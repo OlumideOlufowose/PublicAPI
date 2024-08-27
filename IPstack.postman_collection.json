@@ -382,7 +382,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.ipstack.com/{{myIP}}?callback=Olu's_IP",
+							"raw": "https://api.ipstack.com/{{myIP}}?callback=My_IP",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -395,7 +395,7 @@
 							"query": [
 								{
 									"key": "callback",
-									"value": "Olu's_IP",
+									"value": "My_IP",
 									"description": "Response will be wrapped inside this function name"
 								}
 							]
