@@ -1,2 +1,2 @@
 # PublicAPI
-Automated Public API integrated in CI/CD Pipeline
+Automated Public API integrated in CI/CD Pipeline.
