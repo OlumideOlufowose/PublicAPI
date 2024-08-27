@@ -1,4 +1,4 @@
-name: Automated Public API tests using Postman CLI
+name: Automated API tests using Postman CLI
 
 on: push
 
@@ -11,7 +11,7 @@ jobs:
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
       - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+        run: postman login --with-api-key ${{ secrets.PublicAPI }}
       - name: Run API tests
         run: |
-          postman collection run "31762524-fc2fc44c-48d4-4168-b5d4-b9ff378bcee2" -e "31762524-87d1df25-29f2-4166-9b5b-3256a0b40904"
+          postman collection run "31762524-fc2fc44c-48d4-4168-b5d4-b9ff378bcee2"
