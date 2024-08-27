@@ -1,0 +1,954 @@
+{
+	"info": {
+		"_postman_id": "fc2fc44c-48d4-4168-b5d4-b9ff378bcee2",
+		"name": "IPstack",
+		"description": "## **Quickstart Guide**\n\n<video src=\"https://youtube.com/embed/cjP8lsqc1Y0\" width=\"620\" height=\"310\"></video>\n\n### Step 1: Fork the collection\n\nTo get started quickly, you need to fork the IP Stack Postman Collection. Simply click the button below to fork it.\n\n[<img src=\"https://run.pstmn.io/button.svg\">](https://god.gw.postman.com/run-collection/10131015-55145132-244c-448c-8e6f-8780866e4862?action=collection/fork)\n\n### Step 2: Get your API Access Key\n\n1. Go to the [IP Stack](https://ipstack.com/?utm_source=Postman&utm_medium=Referral) website and choose the right subscription plan for your particular project.\n2. Get your personal API Access Key on the [Dashboard](https://ipstack.com/dashboard) to authenticate with the API. Keep it safe! You can reset it at any time in your Account Dashboard.\n    \n\n## Step 3: Make your first API call\n\nIP Stack Postman collection contains all the three endpoint supported by IP Stack API.\n\n1. Standard IP Lookup\n2. Bulk IP Lookup\n3. Requester Lookup\n    \n\nWe recommend you to start with the Standard IP Lookup endpoint as it's primary endpoint. It is used to look up single IPv4 or IPv6 addresses. To call this endpoint, simply attach any IPv4 or IPv6 address to the API's base URL.\n\nCheck out all the widely used API calls with the necessary parameters in the [Standard IP Lookup folder](https://apilayer.postman.co/workspace/APILayer~2b7498b6-6d91-4fa8-817f-608441fe42a8/folder/10131015-594322f8-abae-4135-80d1-2cf544caa60b?action=share&creator=10131015&ctx=documentation).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31762524"
+	},
+	"item": [
+		{
+			"name": "Requester IP Lookup",
+			"item": [
+				{
+					"name": "Basic Requester IP Lookup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"// Check that ip field on response body is not empty",
+									"pm.test(\"Ip address should not be empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"    pm.expect(responseData.ip).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"// Test to check the response body structure",
+									"pm.test(\"Response body structure is valid\", function () {",
+									"    const responseBody = pm.response.json();",
+									"    pm.expect(responseBody).to.be.an('object');",
+									"    pm.expect(responseBody).to.have.property('ip');",
+									"    pm.expect(responseBody).to.have.property('type');",
+									"    pm.expect(responseBody).to.have.property('continent_code');",
+									"    pm.expect(responseBody).to.have.property('country_code');",
+									"    pm.expect(responseBody).to.have.property('country_name');",
+									"    pm.expect(responseBody).to.have.property('region_code');",
+									"    pm.expect(responseBody).to.have.property('region_name');",
+									"    pm.expect(responseBody).to.have.property('city');",
+									"    pm.expect(responseBody).to.have.property('latitude');",
+									"    pm.expect(responseBody).to.have.property('longitude');",
+									"    pm.expect(responseBody).to.have.property('location');",
+									"    pm.expect(responseBody.location).to.have.property('geoname_id');",
+									"    pm.expect(responseBody.location).to.have.property('capital');",
+									"    pm.expect(responseBody.location).to.have.property('languages');",
+									"    pm.expect(responseBody.location.languages).to.be.an('array');",
+									"    pm.expect(responseBody.location).to.have.property('country_flag');",
+									"    pm.expect(responseBody.location).to.have.property('country_flag_emoji');",
+									"    pm.expect(responseBody.location).to.have.property('country_flag_emoji_unicode');",
+									"    pm.expect(responseBody.location).to.have.property('calling_code');",
+									"    pm.expect(responseBody.location).to.have.property('is_eu');",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Basic Standard IP Lookup\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/check?=",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"check"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						},
+						"description": "The ipstack API also offers a separate API endpoint capable of detecting the IP address which the current API request is coming from. In order to use this endpoint, simply append `check` to the API's base URL and specify your preferred optional parameters."
+					},
+					"response": [
+						{
+							"name": "200 OK – Requester IP Lookup",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.ipstack.com/check?access_key={PASTE_YOUR_API_KEY_HERE}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"ipstack",
+										"com"
+									],
+									"path": [
+										"check"
+									],
+									"query": [
+										{
+											"key": "access_key",
+											"value": "{PASTE_YOUR_API_KEY_HERE}",
+											"description": "You can get your API key by signing up at https://ipstack.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 26 Feb 2024 18:06:15 GMT"
+								},
+								{
+									"key": "x-apilayer-transaction-id",
+									"value": "4ab0772e-4b20-4594-b3df-135762adb992"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "access-control-allow-methods",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "access-control-allow-headers",
+									"value": "*"
+								},
+								{
+									"key": "x-quota-limit",
+									"value": "2000000"
+								},
+								{
+									"key": "x-quota-remaining",
+									"value": "1999971"
+								},
+								{
+									"key": "x-increment-usage",
+									"value": "1"
+								},
+								{
+									"key": "x-request-time",
+									"value": "0.029"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ip\": \"137.59.240.169\",\n    \"type\": \"ipv4\",\n    \"continent_code\": \"AS\",\n    \"continent_name\": \"Asia\",\n    \"country_code\": \"IN\",\n    \"country_name\": \"India\",\n    \"region_code\": \"DL\",\n    \"region_name\": \"Delhi\",\n    \"city\": \"New Delhi\",\n    \"zip\": \"110001\",\n    \"latitude\": 28.635299682617188,\n    \"longitude\": 77.2249984741211,\n    \"location\": {\n        \"geoname_id\": 1261481,\n        \"capital\": \"New Delhi\",\n        \"languages\": [\n            {\n                \"code\": \"hi\",\n                \"name\": \"Hindi\",\n                \"native\": \"हिन्दी\"\n            },\n            {\n                \"code\": \"en\",\n                \"name\": \"English\",\n                \"native\": \"English\"\n            }\n        ],\n        \"country_flag\": \"https://assets.ipstack.com/flags/in.svg\",\n        \"country_flag_emoji\": \"🇮🇳\",\n        \"country_flag_emoji_unicode\": \"U+1F1EE U+1F1F3\",\n        \"calling_code\": \"91\",\n        \"is_eu\": false\n    },\n    \"location\": {\n        \"id\": \"Asia/Kolkata\",\n        \"current_time\": \"2024-02-26T23:36:15+05:30\",\n        \"gmt_offset\": 19800,\n        \"code\": \"IST\",\n        \"is_daylight_saving\": false\n    },\n    \"currency\": {\n        \"code\": \"INR\",\n        \"name\": \"Indian Rupee\",\n        \"plural\": \"Indian rupees\",\n        \"symbol\": \"Rs\",\n        \"symbol_native\": \"টকা\"\n    },\n    \"connection\": {\n        \"asn\": 133275,\n        \"isp\": \"Gigantic Infotel Pvt Ltd\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "The ipstack API also offers a separate API endpoint capable of detecting the IP address which the current API request is coming from. In order to use this endpoint, simply append `check` to the API's base URL and specify your preferred optional parameters.\n\nNote: The Requester IP Lookup endpoint returns the details of the IP address from where the request is coming from. For example, if you make a request from the Postman web app, it will show the details of the Postman server, but if you make a request from the Postman client app, it will show the details of your computer."
+		},
+		{
+			"name": "Standard IP Lookup",
+			"item": [
+				{
+					"name": "Basic Standard IP Lookup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is within acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.ip).to.exist;",
+									"    pm.expect(responseData.type).to.exist;",
+									"    pm.expect(responseData.continent_code).to.exist;",
+									"    pm.expect(responseData.country_code).to.exist;",
+									"    pm.expect(responseData.region_code).to.exist;",
+									"    pm.expect(responseData.city).to.exist;",
+									"    pm.expect(responseData.latitude).to.exist;",
+									"    pm.expect(responseData.longitude).to.exist;",
+									"    pm.expect(responseData.location).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the structure of the location object\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.location).to.be.an('object');",
+									"    pm.expect(responseData.location).to.include.keys('geoname_id');",
+									"    pm.expect(responseData.location).to.include.keys('capital');",
+									"    pm.expect(responseData.location).to.include.property('languages');",
+									"    pm.expect(responseData.location).to.include.property('calling_code');",
+									"    pm.expect(responseData.location).to.include.property('country_flag_emoji');",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Hostname\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/134.201.250.155",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"134.201.250.155"
+							]
+						},
+						"description": "This is the prime endpoint of IPstack API and used to look up single IPv4 or IPv6 addresses. To call this endpoint, simply attach any IPv4 or IPv6 address to the API's base URL."
+					},
+					"response": []
+				},
+				{
+					"name": "Hostname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.ip).to.exist;",
+									"    pm.expect(responseData.type).to.exist;",
+									"    pm.expect(responseData.continent_code).to.exist;",
+									"    pm.expect(responseData.country_name).to.exist;",
+									"    pm.expect(responseData.latitude).to.exist;",
+									"    pm.expect(responseData.longitude).to.exist;",
+									"    pm.expect(responseData.location).to.exist;",
+									"    pm.expect(responseData.connection_type).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"IP is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.ip).to.match(/^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$/);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Response wrapped inside a callback\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/160.39.144.19?hostname=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"160.39.144.19"
+							],
+							"query": [
+								{
+									"key": "hostname",
+									"value": "1",
+									"description": "[optional] Set to 1 to see the Hostname."
+								}
+							]
+						},
+						"description": "Add \"Hostname\" \\[optional\\] and set to `1` to enable Hostname Lookup."
+					},
+					"response": []
+				},
+				{
+					"name": "Response wrapped inside a callback",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Response in different language\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/{{myIP}}?callback=Olu's_IP",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"{{myIP}}"
+							],
+							"query": [
+								{
+									"key": "callback",
+									"value": "Olu's_IP",
+									"description": "Response will be wrapped inside this function name"
+								}
+							]
+						},
+						"description": "Specify a JSONP callback \\[Optional\\] function name according to the JSONP Callbacks section."
+					},
+					"response": []
+				},
+				{
+					"name": "Response in different language",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Specific Response with Fields Parameter\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/134.201.250.155?language=ru",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"134.201.250.155"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "ru",
+									"description": "Supported languages:\n\nen - English/US\nde - German\nes - Spanish\nfr - French\nja - Japanese\npt-br - Portugues (Brazil)\nru - Russian\nzh - Chinese"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set to a 2-letter \"language\" code according to the Specify Output Language section to change output language.\n\n**Supported languages:**\n\n- `en` - English/US\n- `de` - German\n- `es` - Spanish\n- `fr` - French\n- `ja` - Japanese\n- `pt-br` - Portugues (Brazil)\n- `ru` - Russian\n- `zh` - Chinese"
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Response with Fields Parameter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"XML Output\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/134.201.250.155?fields=zip",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"134.201.250.155"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "zip",
+									"description": "[optional] Set to your preferred output field(s) according to the Specify Output Fields section.\n"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set to your preferred output \"field(s)\" according to the Specify Output Fields section."
+					},
+					"response": []
+				},
+				{
+					"name": "XML Output",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Bulk IP Lookup\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/160.39.144.19?output=xml",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"160.39.144.19"
+							],
+							"query": [
+								{
+									"key": "output",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set \"output\" to json or xml to choose between output formats."
+					},
+					"response": []
+				}
+			],
+			"description": "The ipstack's primary endpoint is called Standard Lookup and is used to look up single IPv4 or IPv6 addresses. To call this endpoint, simply attach any IPv4 or IPv6 address to the API's base URL.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bulk IP Lookup",
+			"item": [
+				{
+					"name": "Bulk IP Lookup",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.execution.setNextRequest(\"Bulk Hostname\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/72.229.28.185,110.174.165.78",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"72.229.28.185,110.174.165.78"
+							]
+						},
+						"description": "The ipstack API offers the ability to request data for multiple IPv4 or IPv6 addresses at the same time. In order to process IP addresses in bulk, simply append multiple comma-separated IP addresses to the API's base URL."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Hostname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/72.229.28.185,110.174.165.78?hostname=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"72.229.28.185,110.174.165.78"
+							],
+							"query": [
+								{
+									"key": "hostname",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Add \"Hostname\" \\[optional\\] and set to `1` to enable Hostname Lookup."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Response wrapped inside a callback",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/134.201.250.155,72.229.28.185,110.174.165.78?callback=MY_FUNCTION",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"134.201.250.155,72.229.28.185,110.174.165.78"
+							],
+							"query": [
+								{
+									"key": "callback",
+									"value": "MY_FUNCTION",
+									"description": "Resposne will be wrapped inside this function name"
+								}
+							]
+						},
+						"description": "Specify a JSONP callback \\[Optional\\] function name according to the JSONP Callbacks section."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Response in different language",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/72.229.28.185,110.174.165.78?language=ru",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"72.229.28.185,110.174.165.78"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "ru",
+									"description": "Supported languages:\n\nen - English/US\nde - German\nes - Spanish\nfr - French\nja - Japanese\npt-br - Portugues (Brazil)\nru - Russian\nzh - Chinese"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set to a 2-letter \"language\" code according to the Specify Output Language section to change output language.\n\n**Supported languages:**\n\n- `en` - English/US\n    \n- `de` - German\n    \n- `es` - Spanish\n    \n- `fr` - French\n    \n- `ja` - Japanese\n    \n- `pt-br` - Portugues (Brazil)\n    \n- `ru` - Russian\n    \n- `zh` - Chinese"
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Specific Response with Fields Parameter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/72.229.28.185,110.174.165.78?fields=zip",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"72.229.28.185,110.174.165.78"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "zip",
+									"description": "[optional] Set to your preferred output field(s) according to the Specify Output Fields section.\n"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set to your preferred output \"field(s)\" according to the Specify Output Fields section."
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk XML Output",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// Updated response time test to 1000ms",
+									"pm.test(\"Response time is within an acceptable range\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.ipstack.com/72.229.28.185,110.174.165.78?=&output=xml",
+							"protocol": "https",
+							"host": [
+								"api",
+								"ipstack",
+								"com"
+							],
+							"path": [
+								"72.229.28.185,110.174.165.78"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								},
+								{
+									"key": "output",
+									"value": "xml"
+								}
+							]
+						},
+						"description": "\\[optional\\] Set \"output\" to json or xml to choose between output formats."
+					},
+					"response": []
+				}
+			],
+			"description": "The ipstack API also offers the ability to request data for multiple IPv4 or IPv6 addresses at the same time. In order to process IP addresses in bulk, simply append multiple comma-separated IP addresses to the API's base URL.\n\n> 💡 Note: Bulk IP Lookup Endpoint is only available to users who are on the Professional plan or above."
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{access_key}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "access_key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access_key",
+			"value": "873028c6e9f70ba9c978b32d92917249",
+			"type": "string"
+		},
+		{
+			"key": "IP",
+			"value": "134.201.250.155",
+			"type": "string"
+		},
+		{
+			"key": "myIP",
+			"value": ""
+		}
+	]
+}
