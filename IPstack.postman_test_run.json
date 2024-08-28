@@ -1,0 +1,545 @@
+{
+	"id": "022c9e53-09ce-4287-8e83-becba8626ae7",
+	"name": "IPstack",
+	"timestamp": "2024-08-28T20:26:15.029Z",
+	"collection_id": "31762524-fc2fc44c-48d4-4168-b5d4-b9ff378bcee2",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 22,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-08-28T20:25:58.343Z",
+	"totalFail": 11,
+	"results": [
+		{
+			"id": "3a7f9980-fd06-45e7-b78d-662353fd5d2e",
+			"name": "Basic Requester IP Lookup",
+			"url": "https://api.ipstack.com/check?=&access_key=AUTH_VALUE",
+			"time": 1847,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true,
+				"Ip address should not be empty": false,
+				"Response body structure is valid": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ip address should not be empty": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Response body structure is valid": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1847
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true,
+					"Ip address should not be empty": false,
+					"Response body structure is valid": false
+				}
+			]
+		},
+		{
+			"id": "cbb40c05-08e7-49ee-85aa-eaecbc6c0b71",
+			"name": "Basic Standard IP Lookup",
+			"url": "https://api.ipstack.com/134.201.250.155?access_key=AUTH_VALUE",
+			"time": 901,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within acceptable range": true,
+				"Response has the required fields": false,
+				"Validate the structure of the location object": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within acceptable range": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"Validate the structure of the location object": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				901
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within acceptable range": true,
+					"Response has the required fields": false,
+					"Validate the structure of the location object": false
+				}
+			]
+		},
+		{
+			"id": "b3b54246-662c-4258-815d-0880ca5ae1a0",
+			"name": "Hostname",
+			"url": "https://api.ipstack.com/160.39.144.19?hostname=1&access_key=AUTH_VALUE",
+			"time": 918,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is less than 1000ms": true,
+				"Content-Type header is application/json": true,
+				"Response has the required fields": false,
+				"IP is in a valid format": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has the required fields": {
+					"pass": 0,
+					"fail": 1
+				},
+				"IP is in a valid format": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				918
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is less than 1000ms": true,
+					"Content-Type header is application/json": true,
+					"Response has the required fields": false,
+					"IP is in a valid format": false
+				}
+			]
+		},
+		{
+			"id": "3a5c7465-090e-4d18-a433-13226ab31549",
+			"name": "Response wrapped inside a callback",
+			"url": "https://api.ipstack.com/102.88.37.196?callback=My_IP&access_key=AUTH_VALUE",
+			"time": 1138,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1138
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": false
+				}
+			]
+		},
+		{
+			"id": "9bc2bba7-c9b2-4e9b-8795-106667e8f905",
+			"name": "Response in different language",
+			"url": "https://api.ipstack.com/134.201.250.155?language=ru&access_key=AUTH_VALUE",
+			"time": 1656,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1656
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": false
+				}
+			]
+		},
+		{
+			"id": "fcbc5b32-c1f6-42ad-9527-8c9823a6023f",
+			"name": "Specific Response with Fields Parameter",
+			"url": "https://api.ipstack.com/134.201.250.155?fields=zip&access_key=AUTH_VALUE",
+			"time": 827,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				827
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "e3f071eb-f265-4509-8436-eda779ebf266",
+			"name": "XML Output",
+			"url": "https://api.ipstack.com/160.39.144.19?output=xml&access_key=AUTH_VALUE",
+			"time": 773,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				773
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "59e2b81f-a799-47c6-bbc6-3d481e9fa08e",
+			"name": "Bulk IP Lookup",
+			"url": "https://api.ipstack.com/72.229.28.185,110.174.165.78?access_key=AUTH_VALUE",
+			"time": 1260,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1260
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": false
+				}
+			]
+		},
+		{
+			"id": "34a29838-16ca-4202-a371-466845116e57",
+			"name": "Bulk Hostname",
+			"url": "https://api.ipstack.com/72.229.28.185,110.174.165.78?hostname=1&access_key=AUTH_VALUE",
+			"time": 2838,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				2838
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": false
+				}
+			]
+		},
+		{
+			"id": "6cbf3948-fc94-4115-a7f5-6e3a6eefb705",
+			"name": "Bulk Response wrapped inside a callback",
+			"url": "https://api.ipstack.com/134.201.250.155,72.229.28.185,110.174.165.78?callback=MY_FUNCTION&access_key=AUTH_VALUE",
+			"time": 994,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				994
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "4cd47be1-bcf3-413d-b975-16b00ee9e94e",
+			"name": "Bulk Response in different language",
+			"url": "https://api.ipstack.com/72.229.28.185,110.174.165.78?language=ru&access_key=AUTH_VALUE",
+			"time": 795,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				795
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		},
+		{
+			"id": "3b46781b-c320-4dd1-ab15-2fb994e619e3",
+			"name": "Bulk Specific Response with Fields Parameter",
+			"url": "https://api.ipstack.com/72.229.28.185,110.174.165.78?fields=zip&access_key=AUTH_VALUE",
+			"time": 1083,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": false
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				1083
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": false
+				}
+			]
+		},
+		{
+			"id": "4fa6321b-c112-42bc-9885-ecaa600329e9",
+			"name": "Bulk XML Output",
+			"url": "https://api.ipstack.com/72.229.28.185,110.174.165.78?=&output=xml&access_key=AUTH_VALUE",
+			"time": 949,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response status code is 200": true,
+				"Response time is within an acceptable range": true
+			},
+			"testPassFailCounts": {
+				"Response status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is within an acceptable range": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				949
+			],
+			"allTests": [
+				{
+					"Response status code is 200": true,
+					"Response time is within an acceptable range": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 15979,
+	"collection": {
+		"requests": [
+			{
+				"id": "3a7f9980-fd06-45e7-b78d-662353fd5d2e",
+				"method": "GET"
+			},
+			{
+				"id": "cbb40c05-08e7-49ee-85aa-eaecbc6c0b71",
+				"method": "GET"
+			},
+			{
+				"id": "b3b54246-662c-4258-815d-0880ca5ae1a0",
+				"method": "GET"
+			},
+			{
+				"id": "3a5c7465-090e-4d18-a433-13226ab31549",
+				"method": "GET"
+			},
+			{
+				"id": "9bc2bba7-c9b2-4e9b-8795-106667e8f905",
+				"method": "GET"
+			},
+			{
+				"id": "fcbc5b32-c1f6-42ad-9527-8c9823a6023f",
+				"method": "GET"
+			},
+			{
+				"id": "e3f071eb-f265-4509-8436-eda779ebf266",
+				"method": "GET"
+			},
+			{
+				"id": "59e2b81f-a799-47c6-bbc6-3d481e9fa08e",
+				"method": "GET"
+			},
+			{
+				"id": "34a29838-16ca-4202-a371-466845116e57",
+				"method": "GET"
+			},
+			{
+				"id": "6cbf3948-fc94-4115-a7f5-6e3a6eefb705",
+				"method": "GET"
+			},
+			{
+				"id": "4cd47be1-bcf3-413d-b975-16b00ee9e94e",
+				"method": "GET"
+			},
+			{
+				"id": "3b46781b-c320-4dd1-ab15-2fb994e619e3",
+				"method": "GET"
+			},
+			{
+				"id": "4fa6321b-c112-42bc-9885-ecaa600329e9",
+				"method": "GET"
+			}
+		]
+	}
+}
