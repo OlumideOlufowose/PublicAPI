@@ -21,6 +21,8 @@ To run on test on Github Action CI/CD
 - Push collection to your Github repository
 - Click on Action tab of your Github repository to view automated test and result.
 
+Note: Repository also contains performance test results of the Sample API.
+
 
 
 
